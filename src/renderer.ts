@@ -28,4 +28,14 @@
 
 import './index.css';
 
-console.log('👋 This message is being logged by "renderer.js", included via webpack');
+interface Worker {
+  startWorker: () => Promise<void>;
+}
+
+declare global {
+  const worker: Worker;
+}
+
+document.getElementById("btn").addEventListener("click", () => {
+  worker.startWorker();
+});
